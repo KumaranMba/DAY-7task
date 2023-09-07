@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Array Methods </title>
+  </head>
+  <body>
+    <script>
+      //Create a new XMLHttpRequest object
+      var X = new XMLHttpRequest();
+
+      //Define HTTP method and URL
+      var method = "GET";
+      var url = "https://restcountries.com/v3.1/all";
+
+      //Open the request
+      X.open(method, url);
+
+      X.onload = function () {
+        if (X.status === 200) {
+          //Request was successful
+          console.log(X.responseText);
+          var details = JSON.parse(X.responseText);
+          console.log(details);
+          var result = details.filter((element)=>element.population<200000);
+          console.log(result);
+          var reg = result.map((pop)=>pop.population);
+          console.log(reg);
+                    
+        }
+           
+      }
+
+      //send the request
+      X.send();
+    </script>
+  </body>
+</html>

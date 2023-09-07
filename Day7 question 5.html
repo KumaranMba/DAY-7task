@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Array Methods </title>
+  </head>
+  <body>
+    <script>
+      //Create a new XMLHttpRequest object
+      var X = new XMLHttpRequest();
+
+      //Define HTTP method and URL
+      var method = "GET";
+      var url = "https://restcountries.com/v3.1/all";
+
+      //Open the request
+      X.open(method, url);
+
+      X.onload = function () {
+        if (X.status === 200) {
+          //Request was successful
+          console.log(X.responseText);
+          var details = JSON.parse(X.responseText);
+          console.log(details);
+          var curr = details.filter((element)=>element.currency = "US Dollars");
+          console.log (curr);
+          var filt = details.filter((coun)=>coun.country);// There is no such data found in array(country)
+          console.log(filt);//The output is undefined.
+          //var result = curr.map((res)=>res.country)
+          //console.log(result);
+
+        }
+           
+      }
+
+      //send the request
+      X.send();
+    </script>
+  </body>
+</html>

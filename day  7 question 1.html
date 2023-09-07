@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Array Methods </title>
+  </head>
+  <body>
+    <script>
+      //Create a new XMLHttpRequest object
+      var X = new XMLHttpRequest();
+
+      //Define HTTP method and URL
+      var method = "GET";
+      var url = "https://restcountries.com/v3.1/all";
+
+      //Open the request
+      X.open(method, url);
+
+      X.onload = function () {
+        if (X.status === 200) {
+          //Request was successful
+          console.log(X.responseText);
+          var details = JSON.parse(X.responseText);
+          console.log(details);
+          var result = details.filter((element)=>element.continents == "Asia");
+          console.log(result);
+          var reg = details.filter((element)=>element.region == "Asia");
+          console.log(reg);
+          var cont =result.map((ele)=>ele.continents);
+          console.log(cont);
+          var dinesh = reg.map((Y)=>Y.region);
+          console.log(dinesh);
+        }
+
+          
+      };
+
+      //send the request
+      X.send();
+    </script>
+  </body>
+</html>
